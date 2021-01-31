@@ -19,7 +19,7 @@ public:
 	static float sign(float value);
 	static float clamp(float value, float min, float max);
 
-	static glm::vec2 clamp(glm::vec2 vec, float max_length);
+	static glm::vec2 clamp(glm::vec2, float max_length);
 	
 	static float clamp01(float value);
 	static float distance(glm::vec2 vecA, glm::vec2 vecB);

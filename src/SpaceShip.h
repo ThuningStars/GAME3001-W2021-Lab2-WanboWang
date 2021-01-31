@@ -30,6 +30,7 @@ public:
 	float getAccelerationRate() const;
 	void setAccelerationRate(float rate);
 	
+	
 private:
 
 	glm::vec2 m_destination;

@@ -38,7 +38,7 @@ int main(int argc, char * args[])
 		// delta time
 		auto deltaTime = float(SDL_GetTicks() - frameStart) / 1000.0f;
 		TheGame::Instance()->setDeltaTime(deltaTime);
-
+		
 		frames++;
 		TheGame::Instance()->setFrames(frames);
 

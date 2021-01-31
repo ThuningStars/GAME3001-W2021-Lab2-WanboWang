@@ -30,6 +30,8 @@ void PlayScene::draw()
 void PlayScene::update()
 {
 	updateDisplayList();
+
+	CollisionManager::AABBCheck(m_pSpaceShip, m_pObstacle);
 }
 
 void PlayScene::clean()
@@ -62,14 +64,17 @@ void PlayScene::start()
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 
-	
 	m_pTarget = new Target();
-	m_pTarget->getTransform()->position = glm::vec2(400.0f, 300.0f);
+	m_pTarget->getTransform()->position = glm::vec2(700.0f, 300.0f);
 	addChild(m_pTarget);
+
+	m_pObstacle = new Obstacle();
+	m_pObstacle->getTransform()->position = glm::vec2(500.0f, 300.0f);
+	addChild(m_pObstacle);
 
 	// instantiating spaceship
 	m_pSpaceShip = new SpaceShip();
-	m_pSpaceShip->getTransform()->position = glm::vec2(100.0f, 100.0f);
+	m_pSpaceShip->getTransform()->position = glm::vec2(100.0f, 300.0f);
 	m_pSpaceShip->setEnabled(false);
 	m_pSpaceShip->setDestination(m_pTarget->getTransform()->position);
 	addChild(m_pSpaceShip);
@@ -96,7 +101,7 @@ void PlayScene::GUI_Function() const
 	{
 		m_pSpaceShip->setAccelerationRate(acceleration_rate);
 	}
-
+	
 	static float angleInRadians = m_pSpaceShip->getRotation();
 	if(ImGui::SliderAngle("Orientation Angle", &angleInRadians))
 	{
